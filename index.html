@@ -14,12 +14,13 @@
       <label>Search: <input ng-model="vm.searchText"></label>
       <!-- <p>user input: {{vm.searchText}}</p> -->
     </div>
-    <div class='create'>
+    <button ng-click="showtextfields = !showtextfields" ng-show='!showtextfields'>Add Superhero</button>
+    <div class='create' ng-show = 'showtextfields'>
       <label>Name: <input type="text" ng-model='vm.name'></label>
       <label>Phone Number: <input type="text" ng-model='vm.phoneNumber'></label>
       <label>Comic Affiliation: <input type="text" ng-model='vm.comicAffiliation'></label>
       <label>Photo URL <input type="text" ng-model='vm.photo_url'></label>
-      <button ng-click='vm.addSuperhero()'>Add Superhero</button>
+      <button ng-click='vm.addSuperhero()'>Add</button>
     </div>
   </div>
     <div ng-repeat='superhero in vm.superheros | filter:vm.searchText' ng-class="{'dc': superhero.comicAffiliation == 'DC','marvel' : superhero.comicAffiliation == 'Marvel'}">
