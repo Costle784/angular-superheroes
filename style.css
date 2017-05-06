@@ -1,0 +1,22 @@
+body {
+  text-align:center;
+}
+
+img {
+  max-width:450px;
+}
+.dc {
+  background-color: blue;
+}
+.marvel {
+  background-color: red;
+}
+.searchadd {
+  display:flex;
+  justify-content: space-around;
+}
+.create {
+  display:flex;
+  flex-direction: column;
+  align-items:baseline;
+}

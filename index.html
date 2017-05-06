@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app='superheroPhoneBook'>
 <head>
   <meta charset="UTF-8">
   <title>Superhero Phone Book</title>
   <link rel="stylesheet" href="style.css">
-</head>
-<body>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   <script src="app.js"></script>
-</body>
+</head>
+<body ng-controller='SuperherosController as vm'>
+  <h1>Superhero Phonebook</h1>
+  <div class='searchadd'>
+    <div>
+      <label>Search: <input ng-model="vm.searchText"></label>
+      <!-- <p>user input: {{vm.searchText}}</p> -->
+    </div>
+    <div class='create'>
+      <label>Name: <input type="text" ng-model='vm.name'></label>
+      <label>Phone Number: <input type="text" ng-model='vm.phoneNumber'></label>
+      <label>Comic Affiliation: <input type="text" ng-model='vm.comicAffiliation'></label>
+      <label>Photo URL <input type="text" ng-model='vm.photo_url'></label>
+      <button ng-click='vm.addSuperhero()'>Add Superhero</button>
+    </div>
+  </div>
+    <div ng-repeat='superhero in vm.superheros | filter:vm.searchText' ng-class="{'dc': superhero.comicAffiliation == 'DC','marvel' : superhero.comicAffiliation == 'Marvel'}">
+      <p>{{$index + 1 }}</p>
+      <p>{{ superhero.name }} </p>
+      <p>{{ superhero.phoneNumber}}</p>
+      <p>{{ superhero.comicAffiliation}}</p>
+      <img ng-src='{{superhero.img}}' ng-show="image">
+      <button ng-click="image = !image">View Photo</button>
+
+    </div>
+  </body>
 </html>
